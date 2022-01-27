@@ -19,17 +19,17 @@ class RubiksCube():
         red = color[0]
         green = color[1]
         blue = color[2]
-        if (red > 230) and (green > 230) and (blue > 230):
+        if (red > 190) and (green > 190) and (blue > 190):
             return 'W'
-        if (red > 230) and (green > 100) and (green < 180) and (blue < 110):
+        if (red > 210) and (green > 80) and (green < 180) and (blue < 110):
             return 'O'
-        if (red > 230) and (green > 240) and (blue < 100):
+        if (red > 150) and (green > 200) and (blue < 100):
             return 'Y'
-        if (red < 110) and (green > 170) and (blue < 110):
+        if (red < 110) and (green > 160) and (blue < 110):
             return 'G'
-        if (red < 110) and (green < 110) and (blue > 230):
+        if (red < 120) and (green < 120) and (blue > 160):
             return 'B'
-        if (red > 230) and (green < 110) and (blue < 110):
+        if (red > 160) and (green < 110) and (blue < 110):
             return 'R'
         return 'U'
 

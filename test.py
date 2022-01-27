@@ -72,9 +72,74 @@ class RubiksCube():
         self.display_face(self, "Right", self.R)
         self.display_face(self, "Left", self.L)
 
-    #def movR(self):
-        
+    def rotate_Face(self, face):
+        newFace = self.Unknown_Face
+        for i in range(3):
+            for j in range(3):
+                newFace[i][j] = face[2-j][i]
+        for i in range(3):
+            for j in range(3):
+                face[i][j] = newFace[i][j]
 
+    def movR(self):
+        self.rotate_Face(self, self.R)
+        aux = [self.U[i][2] for i in range(3)]
+        for i in range(3):
+            self.U[i][2] = self.F[i][2]
+        for i in range(3):
+            self.F[i][2] = self.D[i][2]
+        for i in range(3):
+            self.D[i][2] = self.B[2-i][0]
+        for i in range(3):
+            self.B[2-i][0] = aux[i]
+
+    def movL(self):
+        self.rotate_Face(self, self.L)
+        aux = [self.D[i][0] for i in range(3)]
+        for i in range(3):
+            self.D[i][0] = self.F[i][0]
+        for i in range(3):
+            self.F[i][0] = self.U[i][0]
+        for i in range(3):
+            self.U[i][0] = self.B[2-i][2]
+        for i in range(3):
+            self.B[2-i][2] = aux[i]
+
+    def movU(self):
+        self.rotate_Face(self, self.U)
+        aux = [self.L[0][i] for i in range(3)]
+        for i in range(3):
+            self.L[0][i] = self.F[0][i]
+        for i in range(3):
+            self.F[0][i] = self.R[0][i]
+        for i in range(3):
+            self.R[0][i] = self.B[0][i]
+        for i in range(3):
+            self.B[0][i] = aux[i]
+
+    def movD(self):
+        self.rotate_Face(self, self.D)
+        aux = [self.R[2][i] for i in range(3)]
+        for i in range(3):
+            self.R[2][i] = self.F[2][i]
+        for i in range(3):
+            self.F[2][i] = self.L[2][i]
+        for i in range(3):
+            self.L[2][i] = self.B[2][i]
+        for i in range(3):
+            self.B[2][i] = aux[i]
+
+    def movF(self):
+        self.rotate_Face(self, self.F)
+        aux = [self.U[2][i] for i in range(3)]
+        for i in range(3):
+            self.U[2][i] = self.L[2-i][2]
+        for i in range(3):
+            self.L[i][2] = self.D[0][i]
+        for i in range(3):
+            self.D[0][i] = self.R[2-i][0]
+        for i in range(3):
+            self.R[i][0] = aux[i]
 
 def main():
     cube = RubiksCube
